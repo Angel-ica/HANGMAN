@@ -14,30 +14,33 @@ class Hangman:
         print(f"\nThe mystery word has {len(self.word)} characters")
 
     def check_guess(self,guess):
-            if guess.upper() in self.word.upper():
-                self.num_letters-=1
-                for index,value in enumerate(self.word):
-                    if guess in value:
-                        self.word_guessed[index]=guess.upper()
-                        print('\nGood guess')
-                        print(self.word_guessed)
-            else:
-                self.num_lives-=1
-                print(f"\nOops! {guess.upper()} is not in the word, you have {self.num_lives} live(s) left")
-                print(stages[self.max_wrong-self.num_lives])
+        guess=guess.lower()
+        if guess in self.word:
+            print('\n Good guess')
+            for index,value in enumerate(self.word):
+                if value == guess:
+                    self.word_guessed[index] = guess
+            print('\nGood guess')
+            print(self.word_guessed)
+            self.num_letters-=1
+        else:
+            print(f"\nOops! {guess} is not in the word, you have {self.num_lives} live(s) left")
+            print(stages[self.max_wrong-self.num_lives])
+            self.num_lives-=1
+        self.list_of_guesses.append(guess)
 
-    
+
+
     def ask_for_input(self):
         guess=input('>> \n Guess a letter: ')
-        if len(guess)==1 and guess.isalpha():
-            if guess in self.list_of_guesses:
-                self.num_lives-=1
-                print(f"\n{guess.upper()} has already been tried, you have {self.num_lives} live(s) left\n.")
-            else:
-                self.list_of_guesses.append(guess.upper())
-                self.check_guess(guess)
-        else:
+        if len(guess) != 1 and not guess.isalpha():
             print(f"\nInvalid letter")
+        elif guess in self.list_of_guesses:
+            print(f"\n{guess.upper()} has already been tried, you have {self.num_lives} live(s) left\n.")
+        else:
+            self.list_of_guesses.append(guess)
+            self.check_guess(guess)
+
 
 def play_game(word_list):
     game=Hangman(word_list,num_lives=5)
