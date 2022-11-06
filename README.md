@@ -45,7 +45,7 @@ def ask_for_input(self)
 def play_game(word_list):
     prints a little introduction to the game and  continously asks the user for  an input/guess. Tells the player whether they win or lose.
 def play_again():
-    Plays the game again if the user agrees to. 
+    Plays the game again if the user agrees to
 
 #Code Execution
 if__name=='__main__':
