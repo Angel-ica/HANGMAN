@@ -1,7 +1,8 @@
 # Hangman
 Hangman is a simple word guessing game. The program randomly selects a word from a list of given words, a hangman then asks the user for a letter and checks if it is in the randomly selected word.
 It starts with a default number of trials which we call lives and as we know now, a random word from the list of words.
-It showcases a fun display to account for the users progress. The game terminates if the user runs out of lives but of course there's an option to play again!
+
+It also showcases a fun display to account for the users progress. The game terminates if the user runs out of lives but of course there's an option to play again!
 
 
 ```python
